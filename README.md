@@ -4,4 +4,3 @@
 - ChatServerBufferedReaderWhileKadai.java実行（サーバ）
 - ChatClientPrintWriterWhileKadai.java実行(クライアント１)
 - ChatClientPrintWriterWhileKadai2.java実行(クライアント２)	
-クライアント１に入力して送ればクライアント２に届く
