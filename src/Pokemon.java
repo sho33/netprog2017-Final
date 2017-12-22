@@ -6,8 +6,17 @@ public class Pokemon {
         Pokemon pokemon = new Pokemon();
         pokemon.setName("電大太郎");
     }*/
+    private String previous;
     private String name;
     private ArrayList<String> pokemonList = new ArrayList();
+
+    public void setPrevious(String previous) {
+        this.previous = previous;
+    }
+
+    public String getPrevious() {
+        return previous;
+    }
 
     public void setName(String name) {
         this.name = name;

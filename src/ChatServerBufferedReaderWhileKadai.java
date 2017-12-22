@@ -58,13 +58,15 @@ public class ChatServerBufferedReaderWhileKadai {
             writer.println(json);
             writer.flush();
             //※1
-            int i = 5;
+            int i = 100;
             while (i-->0){
                 System.out.println("待機中");
                 String line = reader.readLine();//読み取った文字列を表示
                 pokemon = gson.fromJson(line,Pokemon.class);
                 System.out.println("クライアント１からのメッセージ:" + pokemon);
+                System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
                 System.out.println("名前を取り出す:" + pokemon.getName());
+                pokemon.setPrevious(pokemon.getName());
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
                 json = gson.toJson(pokemon);
@@ -75,7 +77,9 @@ public class ChatServerBufferedReaderWhileKadai {
                 String line2 = reader2.readLine();//読み取った文字列を表示
                 pokemon = gson.fromJson(line2,Pokemon.class);
                 System.out.println("クライアント２からのメッセージ:" + pokemon);
+                System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
                 System.out.println("名前を取り出す:" + pokemon.getName());
+                pokemon.setPrevious(pokemon.getName());
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
                 json = gson.toJson(pokemon);
