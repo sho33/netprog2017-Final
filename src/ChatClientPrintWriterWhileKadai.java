@@ -44,7 +44,7 @@ public class ChatClientPrintWriterWhileKadai {
             BufferedReader socketreader = new BufferedReader
                     (new InputStreamReader(socket.getInputStream()));
 
-            int i = 5;
+            int i = 100;
             while (i-->0){
                 System.out.println("待機中");
                 String line = socketreader.readLine();

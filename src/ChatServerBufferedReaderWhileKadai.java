@@ -1,16 +1,34 @@
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ChatServerBufferedReaderWhileKadai {
     public static void main(String[] args)
     {
         try {
+            // csvを読み込み、全ポケモンの名前な入った配列を作成
+            List<String> pokemonListAll = new ArrayList<>();
+            BufferedReader br
+                    = new BufferedReader(new InputStreamReader(new FileInputStream("pokemon_list.csv"),"SJIS"));
+            String s;
+            // ファイルを行単位で読む
+            while( (s = br.readLine()) != null ) {
+                // カンマで分割したString配列を得る
+                String array[] = s.split( "," );
+                // データ数をチェックしたあと代入、プリントする
+                if( array.length != 2 ) throw new NumberFormatException();
+                pokemonListAll.add(array[1]);
+                //int number = Integer.parseInt( array[0] );
+                //String name = array[1];
+                // 内容を出力する
+                //System.out.println( "|"+number+"|"+name+"|");
+            }
+
             // サーバーソケット作成
             //起動時パラメータからポートを読み取り、
             //そのポートで接続要求を待つ
@@ -40,7 +58,6 @@ public class ChatServerBufferedReaderWhileKadai {
             System.out.println("address2:" + socket2.getInetAddress());
 
             //　通信処理
-            //ソケットの入力ストリームから文字列を1行読み取る。
             BufferedReader reader = new BufferedReader
                     (new InputStreamReader(socket.getInputStream()));
 
@@ -51,7 +68,10 @@ public class ChatServerBufferedReaderWhileKadai {
 
             PrintWriter writer2 = new PrintWriter(socket2.getOutputStream());
 
+            //　クライアント１にjsonを送りしりとり開始
             Pokemon pokemon = new Pokemon();
+            pokemon.setPrevious("ナエトル");
+            pokemon.setName("ナエトル");
             Gson gson = new Gson();
             String json = gson.toJson(pokemon);
 
@@ -65,8 +85,18 @@ public class ChatServerBufferedReaderWhileKadai {
                 pokemon = gson.fromJson(line,Pokemon.class);
                 System.out.println("クライアント１からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
+                char last = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
+                System.out.println(String.valueOf(last));
                 System.out.println("名前を取り出す:" + pokemon.getName());
+                char first = pokemon.getName().charAt(0);
+                System.out.println(String.valueOf(first));
                 pokemon.setPrevious(pokemon.getName());
+                if(String.valueOf(last).equals(String.valueOf(first))){
+                    System.out.println("正しいしりとり");
+                }
+                if(pokemonListAll.contains(pokemon.getName())){
+                    System.out.println(pokemon.getName()+"を含んでいる");
+                }
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
                 json = gson.toJson(pokemon);
@@ -78,8 +108,18 @@ public class ChatServerBufferedReaderWhileKadai {
                 pokemon = gson.fromJson(line2,Pokemon.class);
                 System.out.println("クライアント２からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
+                char last2 = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
+                System.out.println(String.valueOf(last2));
                 System.out.println("名前を取り出す:" + pokemon.getName());
+                char first2 = pokemon.getName().charAt(0);
+                System.out.println(String.valueOf(first2));
                 pokemon.setPrevious(pokemon.getName());
+                if(last == first){
+                    System.out.println("正しいしりとり");
+                }
+                if(pokemonListAll.contains(pokemon.getName())){
+                    System.out.println(pokemon.getName()+"を含んでいる");
+                }
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
                 json = gson.toJson(pokemon);
