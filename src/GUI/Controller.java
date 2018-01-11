@@ -265,12 +265,12 @@ public class Controller {
             if (alreadyUsedButton.size() == 50){
                 //勝ちの処理をここに
                 pokemon.setWinFlag(-1);//相手の負け
-                System.out.println("あなたの勝ち");
+                WinORLose.setText("あなたの勝ち");
             }
             //敗北判定
             if ("ン".equals(word.substring(word.length() - 1, word.length()))){
                 pokemon.setWinFlag(1);//相手の勝ち
-                System.out.println("あなたの負け");
+                WinORLose.setText("あなたの負け");
             }
             pokemon.setName(word);
             pokemon.setPokemonList(word);

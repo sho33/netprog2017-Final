@@ -13,8 +13,13 @@
       <Label fx:id="previousNames" />
       <Label fx:id="nowWord">
          <VBox.margin>
-            <Insets bottom="20.0" top="10.0" />
+            <Insets top="10.0" />
          </VBox.margin></Label>
+      <Label fx:id="WinORLose">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Label>
       <GridPane alignment="center" hgap="10" vgap="10">
       
           <Button fx:id="ア" mnemonicParsing="false" onAction="#clickedCharacter" text="ア" GridPane.columnIndex="11" GridPane.rowIndex="0" />
