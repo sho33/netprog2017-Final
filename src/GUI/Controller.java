@@ -246,7 +246,7 @@ public class Controller {
         データをサーバーに送る
          */
         //ポケモンの名前か判定
-        while (){
+        while (true){
             if(pokemonListAll.contains(word)){
                 break;
             }else {

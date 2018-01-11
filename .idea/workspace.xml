@@ -45,8 +45,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="248" column="15" lean-forward="false" selection-start-line="248" selection-start-column="15" selection-end-line="248" selection-end-column="15" />
+            <state relative-caret-position="220">
+              <caret line="251" column="19" lean-forward="true" selection-start-line="251" selection-start-column="19" selection-end-line="251" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -97,10 +97,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="404" />
-    <option name="y" value="44" />
-    <option name="width" value="1440" />
-    <option name="height" value="843" />
+    <option name="y" value="515" />
+    <option name="width" value="640" />
+    <option name="height" value="515" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -749,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="248" column="15" lean-forward="false" selection-start-line="248" selection-start-column="15" selection-end-line="248" selection-end-column="15" />
+        <state relative-caret-position="220">
+          <caret line="251" column="19" lean-forward="true" selection-start-line="251" selection-start-column="19" selection-end-line="251" selection-end-column="19" />
           <folding />
         </state>
       </provider>
