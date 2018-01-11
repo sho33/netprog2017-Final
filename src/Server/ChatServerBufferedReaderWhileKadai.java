@@ -81,11 +81,10 @@ public class ChatServerBufferedReaderWhileKadai {
             writer.println(json);
             writer.flush();
             //※1
-            int i = 100;
-            while (i-->0){
+            while (true){
                 System.out.println("待機中");
                 String line = reader.readLine();//読み取った文字列を表示
-                pokemon = gson.fromJson(line,Pokemon.class);
+                pokemon = gson.fromJson(line, Pokemon.class);
                 System.out.println("クライアント１からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
                 char last = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
@@ -94,21 +93,25 @@ public class ChatServerBufferedReaderWhileKadai {
                 char first = pokemon.getName().charAt(0);
                 System.out.println(String.valueOf(first));
                 pokemon.setPrevious(pokemon.getName());
-                if(String.valueOf(last).equals(String.valueOf(first))){
+                /*
+                if(last == first){
                     System.out.println("正しいしりとり");
                 }
                 if(pokemonListAll.contains(pokemon.getName())){
                     System.out.println(pokemon.getName()+"を含んでいる");
                 }
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
-
+                */
+                if(pokemon.getWinFlag() == -1 || pokemon.getWinFlag() == 1){
+                    break;
+                }
                 json = gson.toJson(pokemon);
                 writer2.println(json);
                 writer2.flush();
 
                 System.out.println("待機中");
                 String line2 = reader2.readLine();//読み取った文字列を表示
-                pokemon = gson.fromJson(line2,Pokemon.class);
+                pokemon = gson.fromJson(line2, Pokemon.class);
                 System.out.println("クライアント２からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
                 char last2 = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
@@ -117,14 +120,15 @@ public class ChatServerBufferedReaderWhileKadai {
                 char first2 = pokemon.getName().charAt(0);
                 System.out.println(String.valueOf(first2));
                 pokemon.setPrevious(pokemon.getName());
-                if(last == first){
+                /*
+                if(last2 == first2){
                     System.out.println("正しいしりとり");
                 }
                 if(pokemonListAll.contains(pokemon.getName())){
                     System.out.println(pokemon.getName()+"を含んでいる");
                 }
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
-
+                */
                 json = gson.toJson(pokemon);
                 writer.println(json);
                 writer.flush();
@@ -136,9 +140,14 @@ public class ChatServerBufferedReaderWhileKadai {
             //記述する。
             //※1
             reader.close();
+            writer.close();
             socket.close();
             srvSock.close();
             //※2
+            reader2.close();
+            writer2.close();
+            socket2.close();
+            srvSock2.close();
         }
         catch (IOException e) {
             e.printStackTrace();
