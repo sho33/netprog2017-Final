@@ -246,52 +246,48 @@ public class Controller2 {
         データをサーバーに送る
          */
         //ポケモンの名前か判定
-        boolean isSend = true;
-        while (isSend){
-            if(pokemonListAll.contains(word)){
-                isSend = false;
-            }else {
-                clickedClear(event);
-            }
-        }
-        pokemon.setName(word);
-        pokemon.setPokemonList(word);
-        String json = gson.toJson(pokemon);
-        writer.println(json);
-        writer.flush();
+        if(pokemonListAll.contains(word)){
+            pokemon.setName(word);
+            pokemon.setPokemonList(word);
+            String json = gson.toJson(pokemon);
+            writer.println(json);
+            writer.flush();
 
         /*
         リセット処理
          */
-        resistButton = new ArrayList<Button>();
-        word = "";
-        previous = "";
+            resistButton = new ArrayList<Button>();
+            word = "";
+            previous = "";
 
         /*
         相手からのデータを受け取った後の処理
          */
-        try {
-            System.out.println("待機中");
-            String line = socketreader.readLine();
-            pokemon = gson.fromJson(line, Pokemon.class);
-            System.out.println("クライアントからのメッセージ:" + pokemon);
-            System.out.println("名前を取り出す:" + pokemon.getName());
-            System.out.println("リストを取り出す:" + pokemon.getPokemonList());
+            try {
+                System.out.println("待機中");
+                String line = socketreader.readLine();
+                pokemon = gson.fromJson(line, Pokemon.class);
+                System.out.println("クライアントからのメッセージ:" + pokemon);
+                System.out.println("名前を取り出す:" + pokemon.getName());
+                System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
-            //これまでのしりとりのlogを表示
-            for (String names : pokemon.getPokemonList()){
-                previous += names + "＞";
+                //これまでのしりとりのlogを表示
+                for (String names : pokemon.getPokemonList()){
+                    previous += names + "＞";
+                }
+                previousNames.setText(previous);
+
+                //末尾の一文字を取り出し、それをfirstCharに設定
+                onePrevious = pokemon.getName();
+                setFirstChar(onePrevious.substring(onePrevious.length() - 1, onePrevious.length()));
+                word += firstChar;
+                nowWord.setText(word);
+
+            }catch (IOException e){
+                e.printStackTrace();
             }
-            previousNames.setText(previous);
-
-            //末尾の一文字を取り出し、それをfirstCharに設定
-            onePrevious = pokemon.getName();
-            setFirstChar(onePrevious.substring(onePrevious.length() - 1, onePrevious.length()));
-            word += firstChar;
-            nowWord.setText(word);
-
-        }catch (IOException e){
-            e.printStackTrace();
+        }else {
+            clickedClear(event);
         }
     }
 
