@@ -31,6 +31,8 @@ public class Controller {
     private ArrayList<Button> resistButton = new ArrayList<Button>();
     private HashMap<String, String> map = new HashMap<String, String>();
 
+    private ArrayList<Button> alreadyUsedButton = new ArrayList<Button>();
+
     //この辺ザキさんの
     private InetSocketAddress socketAddress;
     private Socket socket;
@@ -252,6 +254,17 @@ public class Controller {
             String json = gson.toJson(pokemon);
             writer.println(json);
             writer.flush();
+
+            /*
+            ここに書いてね
+             */
+            for (Button used : resistButton){
+                alreadyUsedButton.add(used);
+            }
+            if (alreadyUsedButton.size() == 50){
+                //勝ちの処理をここに
+            }
+
 
         /*
         リセット処理
