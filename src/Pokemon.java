@@ -9,6 +9,7 @@ public class Pokemon {
     private String previous;
     private String name;
     private ArrayList<String> pokemonList = new ArrayList();
+    private boolean winFlag = true;
 
     public void setPrevious(String previous) {
         this.previous = previous;
@@ -34,11 +35,16 @@ public class Pokemon {
         return pokemonList;
     }
 
+    public boolean getWinFlag() { return winFlag; }
+
+    public void setWinFlag(boolean winFlag){ this.winFlag = winFlag;}
+
     @Override
     public String toString() {
         return "Pokemon{" +
                 "name='" + name + '\'' +
                 "pokemonList='" + pokemonList + '\'' +
+                "winFlag'" + winFlag + '\'' +
                 '}';
     }
 }

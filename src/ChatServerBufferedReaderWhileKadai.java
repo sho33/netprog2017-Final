@@ -91,14 +91,15 @@ public class ChatServerBufferedReaderWhileKadai {
                 char first = pokemon.getName().charAt(0);
                 System.out.println(String.valueOf(first));
                 pokemon.setPrevious(pokemon.getName());
-                if(String.valueOf(last).equals(String.valueOf(first))){
+                /*
+                if(last == first){
                     System.out.println("正しいしりとり");
                 }
                 if(pokemonListAll.contains(pokemon.getName())){
                     System.out.println(pokemon.getName()+"を含んでいる");
                 }
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
-
+                */
                 json = gson.toJson(pokemon);
                 writer2.println(json);
                 writer2.flush();
@@ -114,14 +115,15 @@ public class ChatServerBufferedReaderWhileKadai {
                 char first2 = pokemon.getName().charAt(0);
                 System.out.println(String.valueOf(first2));
                 pokemon.setPrevious(pokemon.getName());
-                if(last == first){
+                /*
+                if(last2 == first2){
                     System.out.println("正しいしりとり");
                 }
                 if(pokemonListAll.contains(pokemon.getName())){
                     System.out.println(pokemon.getName()+"を含んでいる");
                 }
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
-
+                */
                 json = gson.toJson(pokemon);
                 writer.println(json);
                 writer.flush();
