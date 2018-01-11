@@ -259,10 +259,16 @@ public class Controller {
                 System.out.println("あなたの勝ち");
             }
             //敗北判定
-            System.out.println(word.substring(word.length() - 1, word.length()));
             if ("ン".equals(word.substring(word.length() - 1, word.length()))){
                 pokemon.setWinFlag(1);//相手の勝ち
                 System.out.println("あなたの負け");
+            }
+            //末尾のー、♂、♀、２、Ｚの削除
+            String deletList[] = {"ー","♂","♀","２","Ｚ"};
+            for(String n :deletList){
+                if(n.equals(word.substring(word.length() - 1, word.length()))){
+                    word = word.substring(0, word.length() - 1);
+                }
             }
             pokemon.setName(word);
             pokemon.setPokemonList(word);
