@@ -78,8 +78,8 @@ public class ChatServerBufferedReaderWhileKadai {
             writer.println(json);
             writer.flush();
             //※1
-            int i = 100;
-            while (i-->0){
+            boolean i = true;
+            while (i){
                 System.out.println("待機中");
                 String line = reader.readLine();//読み取った文字列を表示
                 pokemon = gson.fromJson(line,Pokemon.class);
