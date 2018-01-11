@@ -249,21 +249,26 @@ public class Controller2 {
          */
         //ポケモンの名前か判定
         if(pokemonListAll.contains(word)){
+            for (Button used : resistButton){
+                alreadyUsedButton.add(used);
+            }
+            //勝利判定
+            if (alreadyUsedButton.size() == 50){
+                //勝ちの処理をここに
+                pokemon.setWinFlag(-1);//相手の負け
+                System.out.println("あなたの勝ち");
+            }
+            //敗北判定
+            System.out.println(word.substring(word.length() - 1, word.length()));
+            if ("ン".equals(word.substring(word.length() - 1, word.length()))){
+                pokemon.setWinFlag(1);//相手の勝ち
+                System.out.println("あなたの負け");
+            }
             pokemon.setName(word);
             pokemon.setPokemonList(word);
             String json = gson.toJson(pokemon);
             writer.println(json);
             writer.flush();
-
-            /*
-            ここに書いてね
-             */
-            for (Button used : resistButton){
-                alreadyUsedButton.add(used);
-            }
-            if (alreadyUsedButton.size() == 50){
-                //勝ちの処理をここに
-            }
 
         /*
         リセット処理
@@ -283,6 +288,26 @@ public class Controller2 {
                 System.out.println("名前を取り出す:" + pokemon.getName());
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
+                //勝ち負けのフラグを見る
+                if(pokemon.getWinFlag() == 1){
+                    System.out.println("あなたの勝ち");
+                    try {
+                        socketreader.close();
+                        writer.close();
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else if(pokemon.getWinFlag() == -1){
+                    System.out.println("あなたの負け");
+                    try {
+                        socketreader.close();
+                        writer.close();
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 //これまでのしりとりのlogを表示
                 for (String names : pokemon.getPokemonList()){
                     previous += names + "＞";

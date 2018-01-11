@@ -69,54 +69,29 @@ public class Server {
                 pokemon = gson.fromJson(line, Pokemon.class);
                 System.out.println("クライアント１からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
-                //char last = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
-                //System.out.println(String.valueOf(last));
                 System.out.println("名前を取り出す:" + pokemon.getName());
-                //char first = pokemon.getName().charAt(0);
-                //System.out.println(String.valueOf(first));
                 pokemon.setPrevious(pokemon.getName());
-                /*
-                if(last == first){
-                    System.out.println("正しいしりとり");
-                }
-                if(pokemonListAll.contains(pokemon.getName())){
-                    System.out.println(pokemon.getName()+"を含んでいる");
-                }
-                System.out.println("リストを取り出す:" + pokemon.getPokemonList());
-                */
-                if(pokemon.getWinFlag() == -1 || pokemon.getWinFlag() == 1){
-                    break;
-                }
                 json = gson.toJson(pokemon);
                 writer2.println(json);
                 writer2.flush();
+                //勝敗が決まったら終了処理
+                if(pokemon.getWinFlag() == -1 || pokemon.getWinFlag() == 1){
+                    break;
+                }
 
                 System.out.println("待機中");
                 String line2 = reader2.readLine();//テキストを読み込む
                 pokemon = gson.fromJson(line2, Pokemon.class);
                 System.out.println("クライアント２からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
-                //char last2 = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
-                //System.out.println(String.valueOf(last2));
                 System.out.println("名前を取り出す:" + pokemon.getName());
-                //char first2 = pokemon.getName().charAt(0);
-                //System.out.println(String.valueOf(first2));
-                pokemon.setPrevious(pokemon.getName());
-                /*
-                if(last2 == first2){
-                    System.out.println("正しいしりとり");
-                }
-                if(pokemonListAll.contains(pokemon.getName())){
-                    System.out.println(pokemon.getName()+"を含んでいる");
-                }
-                System.out.println("リストを取り出す:" + pokemon.getPokemonList());
-                */
-                if(pokemon.getWinFlag() == -1 || pokemon.getWinFlag() == 1){
-                    break;
-                }
                 json = gson.toJson(pokemon);
                 writer.println(json);
                 writer.flush();
+                //勝敗が決まったら終了処理
+                if(pokemon.getWinFlag() == -1 || pokemon.getWinFlag() == 1){
+                    break;
+                }
             }
 
             //終了処理　このプログラムは1行読み取ったら終了する。
