@@ -7,15 +7,13 @@ import  javafx.scene.control.Label;
 
 import javafx.event.ActionEvent;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.google.gson.Gson;
 
@@ -41,6 +39,7 @@ public class Controller2 {
     private PrintWriter writer;
     private Gson gson = new Gson();
     private Pokemon pokemon;
+    private List<String> pokemonListAll = getPokemonListAll();
 
     @FXML
     private Label nowWord;
@@ -59,6 +58,20 @@ public class Controller2 {
 
         //この辺ザキさんの
         try {
+            // csvを読み込み、全ポケモンの名前の入った配列を作成
+            List<String> pokemonListAll = new ArrayList<>();
+            BufferedReader br
+                    = new BufferedReader(new InputStreamReader(new FileInputStream("pokemon_list.csv"),"SJIS"));
+            String s;
+            // ファイルを行単位で読む
+            while( (s = br.readLine()) != null ) {
+                // カンマで分割したString配列を得る
+                String array[] = s.split( "," );
+                // データ数をチェックしたあと代入、プリントする
+                if( array.length != 2 ) throw new NumberFormatException();
+                pokemonListAll.add(array[1]);
+            }
+
             socketAddress = new InetSocketAddress("localhost", 8889);
             socket = new Socket();
             socket.connect(socketAddress, 10000);
@@ -94,6 +107,27 @@ public class Controller2 {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    private List<String> getPokemonListAll(){
+        List<String> pokemonListAll = new ArrayList<>();
+        try {
+            // csvを読み込み、全ポケモンの名前の入った配列を作成
+            BufferedReader br
+                    = new BufferedReader(new InputStreamReader(new FileInputStream("pokemon_list.csv"),"SJIS"));
+            String s;
+            // ファイルを行単位で読む
+            while( (s = br.readLine()) != null ) {
+                // カンマで分割したString配列を得る
+                String array[] = s.split( "," );
+                // データ数をチェックしたあと代入、プリントする
+                if( array.length != 2 ) throw new NumberFormatException();
+                pokemonListAll.add(array[1]);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return pokemonListAll;
     }
 
     private void setFirstChar(String firstChar){
@@ -207,16 +241,35 @@ public class Controller2 {
     OKがクリックされた際の処理
      */
     public void clickedOK(ActionEvent event){
+
+        /*
+        データをサーバーに送る
+         */
+        //ポケモンの名前か判定
+        boolean isSend = true;
+        while (isSend){
+            if(pokemonListAll.contains(word)){
+                isSend = false;
+            }else {
+                clickedClear(event);
+            }
+        }
         pokemon.setName(word);
         pokemon.setPokemonList(word);
         String json = gson.toJson(pokemon);
         writer.println(json);
         writer.flush();
 
+        /*
+        リセット処理
+         */
         resistButton = new ArrayList<Button>();
         word = "";
         previous = "";
 
+        /*
+        相手からのデータを受け取った後の処理
+         */
         try {
             System.out.println("待機中");
             String line = socketreader.readLine();
@@ -225,16 +278,17 @@ public class Controller2 {
             System.out.println("名前を取り出す:" + pokemon.getName());
             System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
+            //これまでのしりとりのlogを表示
             for (String names : pokemon.getPokemonList()){
                 previous += names + "＞";
             }
-
             previousNames.setText(previous);
 
+            //末尾の一文字を取り出し、それをfirstCharに設定
             onePrevious = pokemon.getName();
             setFirstChar(onePrevious.substring(onePrevious.length() - 1, onePrevious.length()));
             word += firstChar;
-            nowWord.setText(firstChar);
+            nowWord.setText(word);
 
         }catch (IOException e){
             e.printStackTrace();
@@ -247,7 +301,7 @@ public class Controller2 {
     クリックされて非活性化していたbuttonを復活
      */
     public void clickedClear(ActionEvent event){
-        word = "" + firstChar;
+        word = firstChar;
         nowWord.setText(word);
 
         for (Button button : resistButton){

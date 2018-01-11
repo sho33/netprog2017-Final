@@ -14,24 +14,6 @@ public class Server {
     public static void main(String[] args)
     {
         try {
-            // csvを読み込み、全ポケモンの名前な入った配列を作成
-            List<String> pokemonListAll = new ArrayList<>();
-            BufferedReader br
-                    = new BufferedReader(new InputStreamReader(new FileInputStream("pokemon_list.csv"),"SJIS"));
-            String s;
-            // ファイルを行単位で読む
-            while( (s = br.readLine()) != null ) {
-                // カンマで分割したString配列を得る
-                String array[] = s.split( "," );
-                // データ数をチェックしたあと代入、プリントする
-                if( array.length != 2 ) throw new NumberFormatException();
-                pokemonListAll.add(array[1]);
-                //int number = Integer.parseInt( array[0] );
-                //String name = array[1];
-                // 内容を出力する
-                //System.out.println( "|"+number+"|"+name+"|");
-            }
-
             // サーバーソケット作成
             //起動時パラメータからポートを読み取り、
             //そのポートで接続要求を待つ
@@ -83,15 +65,15 @@ public class Server {
             //※1
             while (true){
                 System.out.println("待機中");
-                String line = reader.readLine();//読み取った文字列を表示
+                String line = reader.readLine();//テキストを読み込む
                 pokemon = gson.fromJson(line, Pokemon.class);
                 System.out.println("クライアント１からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
-                char last = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
-                System.out.println(String.valueOf(last));
+                //char last = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
+                //System.out.println(String.valueOf(last));
                 System.out.println("名前を取り出す:" + pokemon.getName());
-                char first = pokemon.getName().charAt(0);
-                System.out.println(String.valueOf(first));
+                //char first = pokemon.getName().charAt(0);
+                //System.out.println(String.valueOf(first));
                 pokemon.setPrevious(pokemon.getName());
                 /*
                 if(last == first){
@@ -110,15 +92,15 @@ public class Server {
                 writer2.flush();
 
                 System.out.println("待機中");
-                String line2 = reader2.readLine();//読み取った文字列を表示
+                String line2 = reader2.readLine();//テキストを読み込む
                 pokemon = gson.fromJson(line2, Pokemon.class);
                 System.out.println("クライアント２からのメッセージ:" + pokemon);
                 System.out.println("ひとつ前の名前:" + pokemon.getPrevious());
-                char last2 = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
-                System.out.println(String.valueOf(last2));
+                //char last2 = pokemon.getPrevious().charAt(pokemon.getPrevious().length()-1);
+                //System.out.println(String.valueOf(last2));
                 System.out.println("名前を取り出す:" + pokemon.getName());
-                char first2 = pokemon.getName().charAt(0);
-                System.out.println(String.valueOf(first2));
+                //char first2 = pokemon.getName().charAt(0);
+                //System.out.println(String.valueOf(first2));
                 pokemon.setPrevious(pokemon.getName());
                 /*
                 if(last2 == first2){
@@ -129,6 +111,9 @@ public class Server {
                 }
                 System.out.println("リストを取り出す:" + pokemon.getPokemonList());
                 */
+                if(pokemon.getWinFlag() == -1 || pokemon.getWinFlag() == 1){
+                    break;
+                }
                 json = gson.toJson(pokemon);
                 writer.println(json);
                 writer.flush();
