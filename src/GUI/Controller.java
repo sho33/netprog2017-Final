@@ -47,6 +47,8 @@ public class Controller {
     private Label nowWord;
     @FXML
     private Label previousNames;
+    @FXML
+    private Label WinORLose;
 
     /*
     初期化処理
@@ -296,7 +298,7 @@ public class Controller {
 
                 //勝ち負けのフラグを見る
                 if(pokemon.getWinFlag() == 1){
-                    System.out.println("あなたの勝ち");
+                    WinORLose.setText("あなたの勝ち");
                     try {
                         socketreader.close();
                         writer.close();
@@ -305,7 +307,7 @@ public class Controller {
                         e.printStackTrace();
                     }
                 }else if(pokemon.getWinFlag() == -1){
-                    System.out.println("あなたの負け");
+                    WinORLose.setText("あなたの負け");
                     try {
                         socketreader.close();
                         writer.close();
