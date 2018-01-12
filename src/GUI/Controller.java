@@ -245,7 +245,6 @@ public class Controller {
     OKがクリックされた際の処理
      */
     public void clickedOK(ActionEvent event){
-
         /*
         データをサーバーに送る
          */
@@ -262,7 +261,7 @@ public class Controller {
                 alreadyUsedButton.add(used);
             }
             //勝利判定
-            if (alreadyUsedButton.size() == 50){
+            if (alreadyUsedButton.size() == 46){
                 //勝ちの処理をここに
                 pokemon.setWinFlag(-1);//相手の負け
                 WinORLose.setText("あなたの勝ち");
@@ -278,59 +277,63 @@ public class Controller {
             writer.println(json);
             writer.flush();
 
-        /*
-        リセット処理
-         */
+            /*
+            リセット処理
+             */
             resistButton = new ArrayList<Button>();
             word = "";
             previous = "";
 
-        /*
-        相手からのデータを受け取った後の処理
-         */
+            /*
+            相手からのデータを受け取った後の処理
+             */
             try {
-                System.out.println("待機中");
                 String line = socketreader.readLine();
-                pokemon = gson.fromJson(line, Pokemon.class);
-                System.out.println("クライアントからのメッセージ:" + pokemon);
-                System.out.println("名前を取り出す:" + pokemon.getName());
-                System.out.println("リストを取り出す:" + pokemon.getPokemonList());
+                if(line != null) {
+                    System.out.println("待機中");
+                    pokemon = gson.fromJson(line, Pokemon.class);
+                    System.out.println("クライアントからのメッセージ:" + pokemon);
+                    System.out.println("名前を取り出す:" + pokemon.getName());
+                    System.out.println("リストを取り出す:" + pokemon.getPokemonList());
 
-                //勝ち負けのフラグを見る
-                if(pokemon.getWinFlag() == 1){
-                    WinORLose.setText("あなたの勝ち");
-                    try {
-                        socketreader.close();
-                        writer.close();
-                        socket.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    //勝ち負けのフラグを見る
+                    if (pokemon.getWinFlag() == 1) {
+                        WinORLose.setText("あなたの勝ち");
+                        try {
+                            socketreader.close();
+                            writer.close();
+                            socket.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (pokemon.getWinFlag() == -1) {
+                        WinORLose.setText("あなたの負け");
+                        try {
+                            socketreader.close();
+                            writer.close();
+                            socket.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }else if(pokemon.getWinFlag() == -1){
-                    WinORLose.setText("あなたの負け");
-                    try {
-                        socketreader.close();
-                        writer.close();
-                        socket.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                //これまでのしりとりのlogを表示
-                for (String names : pokemon.getPokemonList()){
-                    previous += names + "＞";
-                }
-                previousNames.setText(previous);
 
-                //末尾の一文字を取り出し、それをfirstCharに設定
-                onePrevious = pokemon.getName();
-                setFirstChar(onePrevious.substring(onePrevious.length() - 1, onePrevious.length()));
-                word += firstChar;
-                nowWord.setText(word);
+                    //これまでのしりとりのlogを表示
+                    for (String names : pokemon.getPokemonList()) {
+                        previous += names + "＞";
+                    }
+                    previousNames.setText(previous);
+
+                    //末尾の一文字を取り出し、それをfirstCharに設定
+                    onePrevious = pokemon.getName();
+                    setFirstChar(onePrevious.substring(onePrevious.length() - 1, onePrevious.length()));
+                    word += firstChar;
+                    nowWord.setText(word);
+                }
 
             }catch (IOException e){
                 e.printStackTrace();
             }
+
         }else {
             clickedClear(event);
         }
