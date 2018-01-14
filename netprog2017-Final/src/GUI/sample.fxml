@@ -11,7 +11,7 @@
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller">
    <children>
       <Label fx:id="previousNames" />
-      <Label fx:id="nowWord">
+      <Label fx:id="nowWrittenLabel">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin></Label>
@@ -22,61 +22,61 @@
       </Label>
       <GridPane alignment="center" hgap="10" vgap="10">
       
-          <Button fx:id="ア" mnemonicParsing="false" onAction="#clickedCharacter" text="ア" GridPane.columnIndex="11" GridPane.rowIndex="0" />
-          <Button fx:id="イ" mnemonicParsing="false" onAction="#clickedCharacter" text="イ" GridPane.columnIndex="11" GridPane.rowIndex="1" />
-          <Button fx:id="ウ" mnemonicParsing="false" onAction="#clickedCharacter" text="ウ" GridPane.columnIndex="11" GridPane.rowIndex="2" />
-          <Button fx:id="エ" mnemonicParsing="false" onAction="#clickedCharacter" text="エ" GridPane.columnIndex="11" GridPane.rowIndex="3" />
-          <Button fx:id="オ" mnemonicParsing="false" onAction="#clickedCharacter" text="オ" GridPane.columnIndex="11" GridPane.rowIndex="4" />
+          <Button fx:id="a" mnemonicParsing="false" onAction="#clickedCharacter" text="ア" GridPane.columnIndex="11" GridPane.rowIndex="0" />
+          <Button fx:id="i" mnemonicParsing="false" onAction="#clickedCharacter" text="イ" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+          <Button fx:id="u" mnemonicParsing="false" onAction="#clickedCharacter" text="ウ" GridPane.columnIndex="11" GridPane.rowIndex="2" />
+          <Button fx:id="e" mnemonicParsing="false" onAction="#clickedCharacter" text="エ" GridPane.columnIndex="11" GridPane.rowIndex="3" />
+          <Button fx:id="o" mnemonicParsing="false" onAction="#clickedCharacter" text="オ" GridPane.columnIndex="11" GridPane.rowIndex="4" />
       
-          <Button fx:id="カ" mnemonicParsing="false" onAction="#clickedCharacter" text="カ" GridPane.columnIndex="10" GridPane.rowIndex="0" />
-          <Button fx:id="キ" mnemonicParsing="false" onAction="#clickedCharacter" text="キ" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-          <Button fx:id="ク" mnemonicParsing="false" onAction="#clickedCharacter" text="ク" GridPane.columnIndex="10" GridPane.rowIndex="2" />
-          <Button fx:id="ケ" mnemonicParsing="false" onAction="#clickedCharacter" text="ケ" GridPane.columnIndex="10" GridPane.rowIndex="3" />
-          <Button fx:id="コ" mnemonicParsing="false" onAction="#clickedCharacter" text="コ" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+          <Button fx:id="ka" mnemonicParsing="false" onAction="#clickedCharacter" text="カ" GridPane.columnIndex="10" GridPane.rowIndex="0" />
+          <Button fx:id="ki" mnemonicParsing="false" onAction="#clickedCharacter" text="キ" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+          <Button fx:id="ku" mnemonicParsing="false" onAction="#clickedCharacter" text="ク" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+          <Button fx:id="ke" mnemonicParsing="false" onAction="#clickedCharacter" text="ケ" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+          <Button fx:id="ko" mnemonicParsing="false" onAction="#clickedCharacter" text="コ" GridPane.columnIndex="10" GridPane.rowIndex="4" />
       
-          <Button fx:id="サ" mnemonicParsing="false" onAction="#clickedCharacter" text="サ" GridPane.columnIndex="9" GridPane.rowIndex="0" />
-          <Button fx:id="シ" mnemonicParsing="false" onAction="#clickedCharacter" text="シ" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-          <Button fx:id="ス" mnemonicParsing="false" onAction="#clickedCharacter" text="ス" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-          <Button fx:id="セ" mnemonicParsing="false" onAction="#clickedCharacter" text="セ" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-          <Button fx:id="ソ" mnemonicParsing="false" onAction="#clickedCharacter" text="ソ" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+          <Button fx:id="sa" mnemonicParsing="false" onAction="#clickedCharacter" text="サ" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+          <Button fx:id="si" mnemonicParsing="false" onAction="#clickedCharacter" text="シ" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+          <Button fx:id="su" mnemonicParsing="false" onAction="#clickedCharacter" text="ス" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+          <Button fx:id="se" mnemonicParsing="false" onAction="#clickedCharacter" text="セ" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+          <Button fx:id="so" mnemonicParsing="false" onAction="#clickedCharacter" text="ソ" GridPane.columnIndex="9" GridPane.rowIndex="4" />
       
-          <Button fx:id="タ" mnemonicParsing="false" onAction="#clickedCharacter" text="タ" GridPane.columnIndex="8" GridPane.rowIndex="0" />
-          <Button fx:id="チ" mnemonicParsing="false" onAction="#clickedCharacter" text="チ" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-          <Button fx:id="ツ" mnemonicParsing="false" onAction="#clickedCharacter" text="ツ" GridPane.columnIndex="8" GridPane.rowIndex="2" />
-          <Button fx:id="テ" mnemonicParsing="false" onAction="#clickedCharacter" text="テ" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-          <Button fx:id="ト" mnemonicParsing="false" onAction="#clickedCharacter" text="ト" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+          <Button fx:id="ta" mnemonicParsing="false" onAction="#clickedCharacter" text="タ" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+          <Button fx:id="ti" mnemonicParsing="false" onAction="#clickedCharacter" text="チ" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+          <Button fx:id="tu" mnemonicParsing="false" onAction="#clickedCharacter" text="ツ" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+          <Button fx:id="te" mnemonicParsing="false" onAction="#clickedCharacter" text="テ" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+          <Button fx:id="to" mnemonicParsing="false" onAction="#clickedCharacter" text="ト" GridPane.columnIndex="8" GridPane.rowIndex="4" />
       
-          <Button fx:id="ナ" mnemonicParsing="false" onAction="#clickedCharacter" text="ナ" GridPane.columnIndex="7" GridPane.rowIndex="0" />
-          <Button fx:id="ニ" mnemonicParsing="false" onAction="#clickedCharacter" text="ニ" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-          <Button fx:id="ヌ" mnemonicParsing="false" onAction="#clickedCharacter" text="ヌ" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-          <Button fx:id="ネ" mnemonicParsing="false" onAction="#clickedCharacter" text="ネ" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-          <Button fx:id="ノ" mnemonicParsing="false" onAction="#clickedCharacter" text="ノ" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+          <Button fx:id="na" mnemonicParsing="false" onAction="#clickedCharacter" text="ナ" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+          <Button fx:id="ni" mnemonicParsing="false" onAction="#clickedCharacter" text="ニ" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+          <Button fx:id="nu" mnemonicParsing="false" onAction="#clickedCharacter" text="ヌ" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+          <Button fx:id="ne" mnemonicParsing="false" onAction="#clickedCharacter" text="ネ" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+          <Button fx:id="no" mnemonicParsing="false" onAction="#clickedCharacter" text="ノ" GridPane.columnIndex="7" GridPane.rowIndex="4" />
       
-          <Button fx:id="ハ" mnemonicParsing="false" onAction="#clickedCharacter" text="ハ" GridPane.columnIndex="6" GridPane.rowIndex="0" />
-          <Button fx:id="ヒ" mnemonicParsing="false" onAction="#clickedCharacter" text="ヒ" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-          <Button fx:id="フ" mnemonicParsing="false" onAction="#clickedCharacter" text="フ" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-          <Button fx:id="ヘ" mnemonicParsing="false" onAction="#clickedCharacter" text="ヘ" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-          <Button fx:id="ホ" mnemonicParsing="false" onAction="#clickedCharacter" text="ホ" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+          <Button fx:id="ha" mnemonicParsing="false" onAction="#clickedCharacter" text="ハ" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+          <Button fx:id="hi" mnemonicParsing="false" onAction="#clickedCharacter" text="ヒ" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+          <Button fx:id="hu" mnemonicParsing="false" onAction="#clickedCharacter" text="フ" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+          <Button fx:id="he" mnemonicParsing="false" onAction="#clickedCharacter" text="ヘ" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+          <Button fx:id="ho" mnemonicParsing="false" onAction="#clickedCharacter" text="ホ" GridPane.columnIndex="6" GridPane.rowIndex="4" />
       
-          <Button fx:id="マ" mnemonicParsing="false" onAction="#clickedCharacter" text="マ" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-          <Button fx:id="ミ" mnemonicParsing="false" onAction="#clickedCharacter" text="ミ" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-          <Button fx:id="ム" mnemonicParsing="false" onAction="#clickedCharacter" text="ム" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-          <Button fx:id="メ" mnemonicParsing="false" onAction="#clickedCharacter" text="メ" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-          <Button fx:id="モ" mnemonicParsing="false" onAction="#clickedCharacter" text="モ" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+          <Button fx:id="ma" mnemonicParsing="false" onAction="#clickedCharacter" text="マ" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+          <Button fx:id="mi" mnemonicParsing="false" onAction="#clickedCharacter" text="ミ" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+          <Button fx:id="mu" mnemonicParsing="false" onAction="#clickedCharacter" text="ム" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+          <Button fx:id="me" mnemonicParsing="false" onAction="#clickedCharacter" text="メ" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+          <Button fx:id="mo" mnemonicParsing="false" onAction="#clickedCharacter" text="モ" GridPane.columnIndex="5" GridPane.rowIndex="4" />
       
-          <Button fx:id="ヤ" mnemonicParsing="false" onAction="#clickedCharacter" text="ヤ" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-          <Button fx:id="ユ" mnemonicParsing="false" onAction="#clickedCharacter" text="ユ" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-          <Button fx:id="ヨ" mnemonicParsing="false" onAction="#clickedCharacter" text="ヨ" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+          <Button fx:id="ya" mnemonicParsing="false" onAction="#clickedCharacter" text="ヤ" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+          <Button fx:id="yu" mnemonicParsing="false" onAction="#clickedCharacter" text="ユ" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+          <Button fx:id="yo" mnemonicParsing="false" onAction="#clickedCharacter" text="ヨ" GridPane.columnIndex="4" GridPane.rowIndex="4" />
       
-          <Button fx:id="ラ" mnemonicParsing="false" onAction="#clickedCharacter" text="ラ" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-          <Button fx:id="リ" mnemonicParsing="false" onAction="#clickedCharacter" text="リ" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-          <Button fx:id="ル" mnemonicParsing="false" onAction="#clickedCharacter" text="ル" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-          <Button fx:id="レ" mnemonicParsing="false" onAction="#clickedCharacter" text="レ" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-          <Button fx:id="ロ" mnemonicParsing="false" onAction="#clickedCharacter" text="ロ" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+          <Button fx:id="ra" mnemonicParsing="false" onAction="#clickedCharacter" text="ラ" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+          <Button fx:id="ri" mnemonicParsing="false" onAction="#clickedCharacter" text="リ" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+          <Button fx:id="ru" mnemonicParsing="false" onAction="#clickedCharacter" text="ル" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+          <Button fx:id="re" mnemonicParsing="false" onAction="#clickedCharacter" text="レ" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+          <Button fx:id="ro" mnemonicParsing="false" onAction="#clickedCharacter" text="ロ" GridPane.columnIndex="3" GridPane.rowIndex="4" />
       
-          <Button fx:id="ワ" mnemonicParsing="false" onAction="#clickedCharacter" text="ワ" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-          <Button fx:id="ヲ" mnemonicParsing="false" onAction="#clickedCharacter" text="ヲ" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-          <Button fx:id="ン" mnemonicParsing="false" onAction="#clickedCharacter" text="ン" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+          <Button fx:id="wa" mnemonicParsing="false" onAction="#clickedCharacter" text="ワ" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+          <Button fx:id="wo" mnemonicParsing="false" onAction="#clickedCharacter" text="ヲ" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+          <Button fx:id="nn" mnemonicParsing="false" onAction="#clickedCharacter" text="ン" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          <Button mnemonicParsing="false" onAction="#clickedDakuon" text="゛" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          <Button mnemonicParsing="false" onAction="#clickedHandakuon" text="゜" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
          <Button mnemonicParsing="false" onAction="#clickedMini" text="小" GridPane.columnIndex="1" GridPane.rowIndex="4" />
